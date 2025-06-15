@@ -105,8 +105,12 @@ data/
 *.sqlite
 *.sqlite3
 
-# Uploaded files
-uploads/
+# Uploaded files (but keep directory structure)
+uploads/*
+!uploads/.gitkeep
+!uploads/products/
+uploads/products/*
+!uploads/products/.gitkeep
 
 # OS generated files
 .DS_Store
