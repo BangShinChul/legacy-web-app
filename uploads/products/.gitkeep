@@ -1,0 +1,2 @@
+# This file ensures the uploads/products directory is tracked by git
+# Actual uploaded product images will be ignored by .gitignore

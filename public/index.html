@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy E-commerce Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-store"></i> Legacy Store</h1>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#" onclick="showSection('home')">홈</a></li>
+                        <li><a href="#" onclick="showSection('products')">상품</a></li>
+                        <li><a href="#" onclick="showSection('cart')">장바구니 <span id="cart-count" class="cart-count">0</span></a></li>
+                        <li><a href="#" onclick="showSection('orders')">주문내역</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <div id="user-info" class="user-info" style="display: none;">
+                        <span id="user-name"></span>
+                        <button onclick="logout()" class="btn btn-outline">로그아웃</button>
+                    </div>
+                    <div id="auth-buttons" class="auth-buttons">
+                        <button onclick="showSection('login')" class="btn btn-outline">로그인</button>
+                        <button onclick="showSection('register')" class="btn btn-primary">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Section -->
+            <section id="home-section" class="section active">
+                <div class="hero">
+                    <h2>레거시 이커머스 스토어에 오신 것을 환영합니다</h2>
+                    <p>이 애플리케이션은 모놀리스 아키텍처에서 마이크로서비스로의 현대화 실습을 위한 데모입니다.</p>
+                    <button onclick="showSection('products')" class="btn btn-primary btn-large">쇼핑 시작하기</button>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>쉬운 쇼핑</h3>
+                            <p>직관적인 인터페이스로 편리한 쇼핑 경험</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>안전한 결제</h3>
+                            <p>다양한 결제 수단과 보안 시스템</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-truck"></i>
+                            <h3>빠른 배송</h3>
+                            <p>신속하고 안전한 배송 서비스</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-headset"></i>
+                            <h3>고객 지원</h3>
+                            <p>24/7 고객 서비스 및 지원</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Section -->
+            <section id="login-section" class="section">
+                <div class="auth-container">
+                    <div class="auth-form">
+                        <h2>로그인</h2>
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="login-username">사용자명 또는 이메일</label>
+                                <input type="text" id="login-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">비밀번호</label>
+                                <input type="password" id="login-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">로그인</button>
+                        </form>
+                        <p class="auth-switch">
+                            계정이 없으신가요? <a href="#" onclick="showSection('register')">회원가입</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Register Section -->
+            <section id="register-section" class="section">
+                <div class="auth-container">
+                    <div class="auth-form">
+                        <h2>회원가입</h2>
+                        <form id="register-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="register-firstname">이름</label>
+                                    <input type="text" id="register-firstname" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-lastname">성</label>
+                                    <input type="text" id="register-lastname" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-username">사용자명</label>
+                                <input type="text" id="register-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">이메일</label>
+                                <input type="email" id="register-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-phone">전화번호</label>
+                                <input type="tel" id="register-phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">비밀번호</label>
+                                <input type="password" id="register-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-confirm-password">비밀번호 확인</label>
+                                <input type="password" id="register-confirm-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">회원가입</button>
+                        </form>
+                        <p class="auth-switch">
+                            이미 계정이 있으신가요? <a href="#" onclick="showSection('login')">로그인</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products-section" class="section">
+                <div class="section-header">
+                    <h2>상품 목록</h2>
+                    <div class="product-filters">
+                        <select id="category-filter">
+                            <option value="">모든 카테고리</option>
+                        </select>
+                        <input type="text" id="search-input" placeholder="상품 검색...">
+                        <button onclick="searchProducts()" class="btn btn-outline">검색</button>
+                    </div>
+                </div>
+                <div id="products-grid" class="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+                <div id="products-pagination" class="pagination">
+                    <!-- Pagination will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Cart Section -->
+            <section id="cart-section" class="section">
+                <div class="section-header">
+                    <h2>장바구니</h2>
+                </div>
+                <div id="cart-content">
+                    <div id="cart-items" class="cart-items">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div id="cart-summary" class="cart-summary">
+                        <!-- Cart summary will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders-section" class="section">
+                <div class="section-header">
+                    <h2>주문 내역</h2>
+                </div>
+                <div id="orders-content">
+                    <!-- Orders will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Checkout Modal -->
+            <div id="checkout-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>주문하기</h3>
+                        <span class="close" onclick="closeCheckoutModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <form id="checkout-form">
+                            <div class="checkout-section">
+                                <h4>배송 정보</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="shipping-street">주소</label>
+                                        <input type="text" id="shipping-street" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="shipping-city">도시</label>
+                                        <input type="text" id="shipping-city" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="shipping-state">주/도</label>
+                                        <input type="text" id="shipping-state" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="shipping-postal">우편번호</label>
+                                        <input type="text" id="shipping-postal" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="shipping-country">국가</label>
+                                        <input type="text" id="shipping-country" value="대한민국" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="checkout-section">
+                                <h4>결제 정보</h4>
+                                <div class="form-group">
+                                    <label for="payment-method">결제 방법</label>
+                                    <select id="payment-method" required>
+                                        <option value="">결제 방법 선택</option>
+                                        <option value="credit_card">신용카드</option>
+                                        <option value="debit_card">체크카드</option>
+                                        <option value="paypal">PayPal</option>
+                                    </select>
+                                </div>
+                                
+                                <div id="card-details" class="payment-details" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="card-number">카드 번호</label>
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="card-expiry-month">만료 월</label>
+                                            <select id="card-expiry-month">
+                                                <option value="">월</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-expiry-year">만료 년</label>
+                                            <select id="card-expiry-year">
+                                                <option value="">년</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2026">2026</option>
+                                                <option value="2027">2027</option>
+                                                <option value="2028">2028</option>
+                                                <option value="2029">2029</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-cvv">CVV</label>
+                                            <input type="text" id="card-cvv" placeholder="123" maxlength="4">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card-name">카드 소유자명</label>
+                                        <input type="text" id="card-name" placeholder="홍길동">
+                                    </div>
+                                </div>
+                                
+                                <div id="paypal-details" class="payment-details" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="paypal-email">PayPal 이메일</label>
+                                        <input type="email" id="paypal-email" placeholder="user@example.com">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="checkout-section">
+                                <h4>주문 요약</h4>
+                                <div id="checkout-summary">
+                                    <!-- Order summary will be loaded here -->
+                                </div>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button type="button" onclick="closeCheckoutModal()" class="btn btn-outline">취소</button>
+                                <button type="submit" class="btn btn-primary">주문 완료</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Legacy Store</h4>
+                    <p>모놀리스에서 마이크로서비스로의 현대화 실습을 위한 데모 애플리케이션입니다.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>현대화 목표</h4>
+                    <ul>
+                        <li>MSA 분리</li>
+                        <li>완전관리형 DB 마이그레이션</li>
+                        <li>서버리스 함수 분리</li>
+                        <li>컨테이너화 및 ECS 배포</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>기술 스택</h4>
+                    <ul>
+                        <li>Node.js + Express</li>
+                        <li>SQLite (파일 기반 DB)</li>
+                        <li>Vanilla JavaScript</li>
+                        <li>모놀리식 아키텍처</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Legacy Store - AWS 현대화 워크샵 데모</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
